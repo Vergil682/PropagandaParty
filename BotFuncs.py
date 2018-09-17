@@ -41,6 +41,25 @@ async def on-message(message):
     msg3 = 'No Problem {0.author.mention}, The functions are:
     msg4 = '**Help**: Prints this, '
     msg5 = '**8ball**: plays a yes or no question game, '
-    msg6 = '**info
+    msg6 = '**info**: Gives information about the bot, '
+    msg7 = '**square**: Squares the given number, '
+    msg8 = '**add**: Adds the two numbers given, '
+    msg9 = '**Bitcoin**: Gives the current Bitcoin value.'
+    msg2 = msg3 + msg4 + msg5 + msg6 + msg7 + msg8 + msg9
+    await client.send_message(message.channel, msg2.format(message))
     
-  
+@client.event()
+async def on_ready():
+  await client.chang_presence(game=Game(name="with the media"))
+  print("Logged in as " + client.user.name)
+   
+@client.command()
+async def Bitcoin():
+  url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
+  async with aiohttp.ClientSession() as session:
+    raw_response = await session.get(url)
+    response = await raw_response.text()
+    response = json.loads(response)
+    await client.say("Bitcoin price is: $" + response['bpi']['USD']['rate'])
+    
+client.run(TOKEN)
