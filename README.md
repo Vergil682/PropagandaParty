@@ -1,0 +1,2 @@
+# PropagandaParty
+My Discord Bot
