@@ -5,7 +5,6 @@ import aiohttp
 from discord import Game
 from discord.ext.commands import Bot
 
-TOKEN = 'NDc3NzY1NTU1MzM2NTExNDg4.DnTVkA.1UIsVEkB4nCCkzC_4Ag7PDaL7qY'
 BOT_PREFIX = ("PZ!", "pz!", "Pz!", "!pz", "!Pz!", "!PZ")
 client = Bot(command_prefix=BOT_PREFIX)
 
